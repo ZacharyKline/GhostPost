@@ -1,0 +1,36 @@
+{% load static %}
+<link rel='stylesheet' href='../static/styles.css'>
+
+<div id='content'>
+    <h1 class='headers'>Ghost Post!</h1>
+    <h2 class='headers'>Your favorite place to brag or bitch</h2>
+    <div>
+        <div><a href='/post/'>Whats on your mind?</a></div>
+    </div>
+    <br>
+    <br>
+    <h4>View Content:</h4>
+    <div>
+        <button><a href='/'>All Posts</a></button>
+        <button><a href='/boasted/'>Boasts</a></button>
+        <button><a href='/roasted/'>Roasts</a></button>
+    </div>
+    <h4>Sort By:</h4>
+    <div>
+        <button><a href='/'>Time</a></button>
+        <button><a href='/best/'>Loved</a></button>
+        <button><a href='/worst/'>Controversial</a></button>
+    </div>
+    <div>
+        {% for item in data %}
+        <div id='card'>
+            <p>{{item.message}}</p>
+            <p> <button><a href='/upvote/{{item.id}}'>Upvote:</a></button> {{item.total_votes}} <button><a
+                        href='/downvote/{{item.id}}'>Downvote:</a></button>
+                {{item.post_time}}</p>
+        </div>
+        {% endfor %}
+
+
+    </div>
+</div>

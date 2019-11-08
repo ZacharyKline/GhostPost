@@ -1,0 +1,18 @@
+
+body{
+    background: rgb(136, 136, 136);
+    background-image: url('https://media0.giphy.com/media/3HeOPCOyyyhmo/giphy.gif');
+    background-size: cover;
+    margin-left: 20px;
+    margin-top: 20px;
+    color: white;
+}
+
+#card {
+    background: rgb(82, 82, 82);
+    border: 3x solid black;
+    padding-left: 2px;
+    margin: 4px;
+    border-radius: 10px;
+    width: 45%;
+}
