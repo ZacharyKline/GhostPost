@@ -7,9 +7,13 @@ Post Model:
     datetimefield for submission time
 
 """
-
+import random
 from django.db import models
 from django.utils import timezone
+
+
+def random_string():
+    return str(random.randint(100000, 999999))
 
 
 class BoastnRoast(models.Model):
@@ -19,10 +23,7 @@ class BoastnRoast(models.Model):
     downvote = models.IntegerField(default=0)
     post_time = models.DateTimeField(default=timezone.now)
     total_votes = models.IntegerField(default=0)
-    # @property
-    # def total_votes(self):
-    #     return self.upvote + self.downvote
-    # vote_tally = total_votes
+    secret_code = models.CharField(default=random_string, max_length=6)
 
     def __str__(self):
         return f'{self.post_time},{self.message}'

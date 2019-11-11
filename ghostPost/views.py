@@ -1,6 +1,8 @@
 from django.shortcuts import render, HttpResponseRedirect, reverse
 from ghostPost.models import BoastnRoast
 from ghostPost.forms import BoastorRoast
+from django.http import HttpResponse, HttpResponseNotFound
+from django.views.decorators.csrf import csrf_exempt
 
 
 def index(request):
@@ -74,3 +76,15 @@ def postit(request):
         return HttpResponseRedirect(reverse('homepage'))
     form = BoastorRoast()
     return render(request, html, {'form': form})
+
+
+@csrf_exempt
+def deletepost(request, secret_code):
+    try:
+        if request.method == 'DELETE':
+            query = BoastnRoast.objects.get(secret_code=secret_code)
+            query.delete()
+            return HttpResponse('Deleted')
+        return HttpResponse('Whoops')
+    except BoastnRoast.DoesNotExist:
+        return HttpResponseNotFound()

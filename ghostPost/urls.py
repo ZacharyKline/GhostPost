@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from ghostPost.models import BoastnRoast
 from ghostPost import views
 
+
 admin.site.register(BoastnRoast)
 
 urlpatterns = [
@@ -31,7 +32,8 @@ urlpatterns = [
     path('upvote/<int:id>', views.upvoting, name='upvoted'),
     path('downvote/<int:id>', views.downvoting, name='downvoted'),
     path('worst/', views.worst_view, name='worst_posts'),
-    path('best/', views.best_view, name='best_posts')
+    path('best/', views.best_view, name='best_posts'),
+    path('api/posts/<int:secret_code>/', views.deletepost, name='delete_me')
 ]
 
 if settings.DEBUG:
